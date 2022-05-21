@@ -52,5 +52,9 @@ public class HelloController {
     // - 기본 문자처리: StringHttpMessageConerter, 기본 객체처리: MappingJackson2HttpMessageConverter
     // - byte처리 등 기타 여러 HttpMessageConverter가 기본으로 등록돼 있음
     // - SpringBoot는 기본으로 Jackson이라는 라이브러리를 탑재하고 있음. Jackson이란 라이브러리가 객체를 json으로 바꿔줌
+    // 참고: 클라이언트의 ATTP Accept헤더와 서버의 컨트롤ㄹ러 반환 타입 정보 둘을 조합해서 HttpMessageConverter가선택됨. 생략.
 
+    // 정적 컨텐츠: 그냥 파일을 그대로 내려준다
+    // MVC - 템플릿 엔진: 템플릿 엔진을 MVC방식으로 쪼개서 view를 템플릿엔진으ㄹ로 html을 한국어로 랜더링해서 고객에 전달함
+    // API: 객체를 반환함. view없이 json으로 바꿔서 전달하는 방식.
 }
