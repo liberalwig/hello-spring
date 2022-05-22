@@ -34,12 +34,12 @@ class MemoryMemberRepositoryTest {// 테스트주도개발TDD : 테스트를 먼
     }
 
     @Test
-    public void findByName(){
+    public void findByName() {
         Member member1 = new Member();
         member1.setName("spring1");
         repository.save(member1);
 
-        Member member2= new Member();
+        Member member2 = new Member();
         member2.setName("spring2");
         repository.save(member2);
 
@@ -47,7 +47,6 @@ class MemoryMemberRepositoryTest {// 테스트주도개발TDD : 테스트를 먼
 
         assertThat(result).isEqualTo(member1);
     }
-
     @Test
     public void findAll() {
         Member member1 = new Member();
