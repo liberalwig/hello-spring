@@ -11,18 +11,18 @@ public class MemoryMemberRepository implements MemberRepository{
 
     @Override
     public Member save(Member member) {
-        return member.setId(++sequence);
+        member.setId(++sequence);
         store.put(member.getId(), member);
         return member;
     }
 
     @Override
-    public Optional<Member> findByID(Long id) {
+    public Optional<Member> findById(Long id) {
         return Optional.ofNullable(store.get(id)); //null일 경우 처리
     }
 
     @Override
-    public Optional<Member> findByID(String name) {
+    public Optional<Member> findById(String name) {
         return Optional.empty();
     }
 
@@ -31,6 +31,8 @@ public class MemoryMemberRepository implements MemberRepository{
         store.values().stream()
                 .filter(member -> member.getName().equals(name))
                 .findAny();
+
+        return null;
     }
 
     @Override

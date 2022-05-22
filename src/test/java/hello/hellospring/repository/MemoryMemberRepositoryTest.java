@@ -28,7 +28,7 @@ class MemoryMemberRepositoryTest {// 테스트주도개발TDD : 테스트를 먼
 
         repository.save(member);
 
-        Member result = repository.findByID(member.getId()).get();
+        Member result = repository.findById(member.getId()).get();
         // System.out.println("result = " + (result = member));
         assertThat(member).isEqualTo(result);
     }

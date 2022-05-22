@@ -1,13 +1,15 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
 
-    private final Member Repository memberRepository =new MemoryMemberRepository();
+    private final MemberRepository memberRepository = new MemoryMemberRepository();
 
     /*
   회원 가입
@@ -16,7 +18,7 @@ public class MemberService {
         // 같은 이름의 중복회원은 X
         Optional<Member> result = memberRepository.findByName(member.getName()); // Optional을 바로 반환하는 건 안 예쁨
         result.ifPresent(m -> {
-            throw new IllegalStateException("이미 존재하는 회원입니다.")
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
         memberRepository.save(member);
         return member.getId(); // id만 반환하는 걸로 스펙을 잡음
