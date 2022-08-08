@@ -1,6 +1,8 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemoryMemberRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +12,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
-
     MemberService memberService = new MemberService();
+    MemoryMemberRepository memoryMemberRepository = new MemoryMemberRepository();
+
+    @AfterEach
+    public void afterEach() {
+        memberRepository.classStore();
+    }
+
 
     @Test // 테스트는 한국어로 써도 좋음. 빌드될 시 테스트코드는 실제코드에 비포함
     void 회원가입() {
@@ -37,12 +45,24 @@ class MemberServiceTest {
 
         // when
         memberService.join(member1); // memberService에서 member1을 조인했을 시엔 문제 안 발생
+        IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));// 화살표 뒤: 람다로 넘어가야 함
+
+        assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
+
+        /*
         try {
             memberService.join(member2);
             fail(); // "예외가 발생해야 합니다."
         } catch (IllegalStateException e) { // 예외가 터지면 catch로 이동
             assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
         }
+
+        try {
+            memberService.memberRepostioryy.
+
+
+        */
+
 
         // then
     }

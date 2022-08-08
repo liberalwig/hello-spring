@@ -5,7 +5,7 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### STS ###
+### STS ### // 깃에는 소스코드만 올라가야 하고 빌드된 건 올라가면 안됨. 요즘엔 스프링부트가 다 잘 해줌.
 .apt_generated
 .classpath
 .factorypath
